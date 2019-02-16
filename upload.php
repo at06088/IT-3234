@@ -10,9 +10,6 @@ $handle = fopen('april.log','r') or die ('File opening failed');
 $requestsCount = 0;
 $num404 = 0;
 
-
-This is a test
-
 while (!feof($handle)) {
     $dd = fgets($handle);
     $requestsCount++;
