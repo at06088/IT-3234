@@ -2,18 +2,15 @@
 $target_dir = "/var/www/uploads/";
 $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
 $uploadOk = 1;
-$imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
 
 $file_name = $_FILES["fileToUpload"]["name"];
-$file_tmp =$_FILES['image']['tmp_name'];
+$file_tmp =$_FILES['fileToUpload']['tmp_name'];
 
-echo $file_name;
-
-move_uploaded_file($file_tmp,"/var/www/html/uploads" . $file_name);
+move_uploaded_file($file_tmp,"/var/www/html/" . $file_name);
 
 //Opens file
-$handle = fopen('april.log','r') or die ('File opening failed');
-
+$handle = fopen($file_name,'r') or die ('File opening failed');
+//$handle = file_get_contents($file_tmp);
 $requestsCount = 0;
 
 //Varibles
@@ -79,17 +76,17 @@ function hasRequestType($l,$s) {
         return substr_count($l,$s) > 0;
 }
 //File Download
-
 /*
-header('Content-Type: application/octet-stream');
-    header('Content-Disposition: attachment; filename='.basename($fileman));
+
+    header('Content-Type: application/octet-stream');
+    header('Content-Disposition: attachment; filename=' . "output.log");
     header('Expires: 0');
     header('Cache-Control: must-revalidate');
     header('Pragma: public');
-    header('Content-Length: ' . filesize($fileman));
-    readfile($fileman);
+    header('Content-Length: ' . filesize($file_name));
+    //readfile($file_name);
     exit;
-*/
 
+*/
 
 ?>

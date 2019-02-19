@@ -231,4 +231,21 @@ local - - [01/Jan/2019:20:56:28 -0700] "GET index.html HTTP/1.0" 200 1451
 local - - [01/Jan/2019:20:56:35 -0700] "GET 991.html HTTP/1.0" 200 1854
 local - - [01/Jan/2019:20:56:46 -0700] "GET 5.html HTTP/1.0" 200 768
 local - - [01/Jan/2019:20:56:49 -0700] "GET 992.html HTTP/1.0" 200 870
-
+local - - [01/Jan/2019:20:57:03 -0700] "GET 990.html HTTP/1.0" 200 2153
+local - - [01/Jan/2019:20:57:08 -0700] "GET 706.html HTTP/1.0" 200 3797
+local - - [01/Jan/2019:20:58:16 -0700] "GET 989.html HTTP/1.0" 200 895
+local - - [01/Jan/2019:20:58:21 -0700] "GET 1895.html HTTP/1.0" 200 449
+local - - [01/Jan/2019:20:58:48 -0700] "GET 989.html HTTP/1.0" 200 895
+local - - [01/Jan/2019:20:58:59 -0700] "GET 5.html HTTP/1.0" 200 768
+local - - [01/Jan/2019:20:59:02 -0700] "GET index.html HTTP/1.0" 200 2797
+local - - [01/Jan/2019:20:59:14 -0700] "GET 167.html HTTP/1.0" 200 1268
+local - - [01/Jan/2019:20:59:26 -0700] "GET index.html HTTP/1.0" 200 1180
+local - - [01/Jan/2019:20:59:32 -0700] "GET 492.html HTTP/1.0" 200 11339
+remote - - [01/Jan/2019:21:35:01 -0700] "GET 165.html HTTP/1.0" 200 578
+remote - - [01/Jan/2019:22:30:02 -0700] "GET index.html HTTP/1.0" 200 2797
+remote - - [01/Jan/2019:22:30:05 -0700] "GET 2.gif HTTP/1.0" 200 2555
+remote - - [01/Jan/2019:22:30:25 -0700] "GET 3.gif HTTP/1.0" 200 36403
+remote - - [01/Jan/2019:22:37:47 -0700] "GET index.html HTTP/1.0" 200 2797
+remote - - [01/Jan/2019:22:37:50 -0700] "GET 2.gif HTTP/1.0" 200 2555
+remote - - [01/Jan/2019:22:38:14 -0700] "GET 3.gif HTTP/1.0" 200 36403
+remote - - [01/Jan/2019:23:02:29 -0700] "GET 151.html HTTP/1.0" 200 2323
