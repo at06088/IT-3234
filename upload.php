@@ -14,14 +14,14 @@ $handle = fopen("uploads/" . $file_name,'r') or die ('File opening failed');
 $requestsCount = 0;
 
 //Varibles
-
+$numremote = 0;
+$numlocal = 0;
 $num404 = 0;
 $lines = 0;
 $num200 = 0;
 $num302 = 0;
 $num304 = 0;
 $num403 = 0;
-$numremote = 0;
 
 //Finds the 404 and number of lines
 while (!feof($handle)) {
@@ -31,8 +31,14 @@ while (!feof($handle)) {
     $parts = explode('"', $dd);
     $statusCode = substr($parts[2], 0, 4);
 
-    if (hasRequestType($statusCode, 'remote')){
-      $numremote++;
+    //remote
+    if (substr_count($dd, 'remote')) {
+    $numremote++;
+    }
+
+    //Remote
+    if (substr_count($dd, 'local')) {
+    $numlocal++;
     }
 
     //check for 404
@@ -60,6 +66,7 @@ while (!feof($handle)) {
 echo "Total Rows: " . $lines . "\n";
 echo "Total Size: " . $_FILES['fileToUpload']['size'] . "\n";
 echo "Total Remote Requests: " . $numremote . "\n";
+echo "Total local Requests: " . $numlocal . "\n";
 echo "Total 200 Requests: " . $num200 . "\n";
 echo "Total 302 Requests: " . $num302 . "\n";
 echo "Total 304 Requests: " . $num304 . "\n";
