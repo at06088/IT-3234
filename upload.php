@@ -60,6 +60,13 @@ while (!feof($handle)) {
     }
 
 }
+echo "Total Rows: " . $lines . "\n";
+echo "Total Size: " . $_FILES['fileToUpload']['size'] . "\n";
+echo "Total Remote Requests: " . $numremote . "\n";
+echo "Total 200 Requests: " . $num200 . "\n";
+echo "Total 302 Requests: " . $num302 . "\n";
+echo "Total 304 Requests: " . $num304 . "\n";
+echo "Total 403 Requests: " . $num403 . "\n";
 echo "Total 404 Requests: " . $num404 . "\n";
 
 
