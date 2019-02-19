@@ -6,10 +6,10 @@ $uploadOk = 1;
 $file_name = $_FILES["fileToUpload"]["name"];
 $file_tmp =$_FILES['fileToUpload']['tmp_name'];
 
-move_uploaded_file($file_tmp,"/var/www/html/" . $file_name);
+move_uploaded_file($file_tmp,"/var/www/html/uploads/" . $file_name);
 
 //Opens file
-$handle = fopen($file_name,'r') or die ('File opening failed');
+$handle = fopen("uploads/" . $file_name,'r') or die ('File opening failed');
 //$handle = file_get_contents($file_tmp);
 $requestsCount = 0;
 
@@ -76,7 +76,7 @@ function hasRequestType($l,$s) {
         return substr_count($l,$s) > 0;
 }
 //File Download
-/*
+
 
     header('Content-Type: application/octet-stream');
     header('Content-Disposition: attachment; filename=' . "output.log");
@@ -87,6 +87,6 @@ function hasRequestType($l,$s) {
     //readfile($file_name);
     exit;
 
-*/
+
 
 ?>
