@@ -64,6 +64,7 @@ while (!feof($handle)) {
 
 }
 echo "Total Rows: " . $lines . "\n";
+echo "Total number of bad lines: " . "\n";
 echo "Total Size: " . $_FILES['fileToUpload']['size'] . "\n";
 echo "Total Remote Requests: " . $numremote . "\n";
 echo "Total local Requests: " . $numlocal . "\n";
