@@ -63,16 +63,16 @@ while (!feof($handle)) {
     }
 
 }
-echo "Total Rows: " . $lines . "\n";
-echo "Total number of bad lines: " . "\n";
-echo "Total Size: " . $_FILES['fileToUpload']['size'] . "\n";
-echo "Total Remote Requests: " . $numremote . "\n";
-echo "Total local Requests: " . $numlocal . "\n";
-echo "Total 200 Requests: " . $num200 . "\n";
-echo "Total 302 Requests: " . $num302 . "\n";
-echo "Total 304 Requests: " . $num304 . "\n";
-echo "Total 403 Requests: " . $num403 . "\n";
-echo "Total 404 Requests: " . $num404 . "\n";
+echo "Total Rows: " . $lines . "\r\n";
+echo "Total number of bad lines: " . "\r\n";
+echo "Total Size: " . $_FILES['fileToUpload']['size'] . "\r\n";
+echo "Total Remote Requests: " . $numremote . "\r\n";
+echo "Total local Requests: " . $numlocal . "\r\n";
+echo "Total 200 Requests: " . $num200 . "\r\n";
+echo "Total 302 Requests: " . $num302 . "\r\n";
+echo "Total 304 Requests: " . $num304 . "\r\n";
+echo "Total 403 Requests: " . $num403 . "\r\n";
+echo "Total 404 Requests: " . $num404 . "\r\n";
 
 
 
