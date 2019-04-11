@@ -1,10 +1,10 @@
 <?php
 $target_dir = "/var/www/uploads/";
 $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
-$uploadOk = 1;
 
 $file_name = $_FILES["fileToUpload"]["name"];
 $file_tmp =$_FILES['fileToUpload']['tmp_name'];
+$path_parts = pathinfo($target_file);
 
 move_uploaded_file($file_tmp,"/var/www/html/uploads/" . $file_name);
 
@@ -14,6 +14,7 @@ $handle = fopen("uploads/" . $file_name,'r') or die ('File opening failed');
 $requestsCount = 0;
 
 //Varibles
+$badlines = 0;
 $numremote = 0;
 $numlocal = 0;
 $num404 = 0;
@@ -34,37 +35,37 @@ while (!feof($handle)) {
     //remote
     if (substr_count($dd, 'remote')) {
     $numremote++;
-    }
-
-    //Remote
-    if (substr_count($dd, 'local')) {
+    }elseif (substr_count($dd, 'local')) {
     $numlocal++;
-    }
+  }else {
+    $badlines++;
+  }
 
     //check for 404
     if (hasRequestType($statusCode, '404')){
       $num404++;
-    }
-    //Check for 200
-    if (hasRequestType($statusCode, '200')){
+    }elseif (hasRequestType($statusCode, '200')){
       $num200++;
     }
     //check for 302
-    if (hasRequestType($statusCode, '302')){
+    elseif (hasRequestType($statusCode, '302')){
       $num302++;
     }
     //304
-    if (hasRequestType($statusCode, '304')){
+    elseif (hasRequestType($statusCode, '304')){
       $num304++;
     }
     //403
-    if (hasRequestType($statusCode, '403')){
+    elseif (hasRequestType($statusCode, '403')){
       $num403++;
+    }
+    else {
+      $badlines++;
     }
 
 }
 echo "Total Rows: " . $lines . "\r\n";
-echo "Total number of bad lines: " . "\r\n";
+echo "Total number of bad lines: " . $badlines . "\r\n";
 echo "Total Size: " . $_FILES['fileToUpload']['size'] . "\r\n";
 echo "Total Remote Requests: " . $numremote . "\r\n";
 echo "Total local Requests: " . $numlocal . "\r\n";
@@ -81,13 +82,15 @@ fclose($handle);
 
 
 function hasRequestType($l,$s) {
+
         return substr_count($l,$s) > 0;
+
 }
 //File Download
 
-
+/*
     header('Content-Type: application/octet-stream');
-    header('Content-Disposition: attachment; filename=' . "output.log");
+    header('Content-Disposition: attachment; filename=' . $path_parts['filename'] . ".out");
     header('Expires: 0');
     header('Cache-Control: must-revalidate');
     header('Pragma: public');
@@ -96,5 +99,5 @@ function hasRequestType($l,$s) {
     exit;
 
 
-
+*/
 ?>
