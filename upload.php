@@ -5,7 +5,7 @@ $size = 0;
 $file_name = $_FILES["fileToUpload"]["name"];
 $file_tmp = $_FILES['fileToUpload']['tmp_name'];
 $size = $_FILES['fileToUpload']['size'];
-echo filesize($file_name);
+echo filesize($target_file);
 $path_parts = pathinfo($target_file);
 
 move_uploaded_file($file_tmp,"/var/www/html/uploads/" . $file_name);
@@ -40,8 +40,10 @@ while (!feof($handle)) {
     }elseif (substr_count($dd, 'local')) {
     $numlocal++;
         $lines++;
-  }else {
+  }elseif (substr_count($dd, '  ')) {
     $badlines++;
+  }else{
+$spaces++;
   }
 
     //check for 404
