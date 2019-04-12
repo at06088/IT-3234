@@ -162,7 +162,7 @@ function hasRequestType($l,$s) {
 }
 //File Download
 
-/*
+
     header('Content-Type: application/octet-stream');
     header('Content-Disposition: attachment; filename=' . $path_parts['filename'] . ".out");
     header('Expires: 0');
@@ -173,5 +173,6 @@ function hasRequestType($l,$s) {
     exit;
 
 
-*/
+
+
 ?>
