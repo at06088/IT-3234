@@ -1,0 +1,9 @@
+Total Rows: 294
+Total number of bad lines: 0
+Total Size: 
+Total Remote Requests: 198
+Total local Requests: 96
+Total 200 Requests: 251
+Total 304 Requests: 1
+Total 404 Requests: 3
+Total 401 Requests: 39
