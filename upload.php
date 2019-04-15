@@ -7,6 +7,7 @@ $file_tmp = $_FILES['fileToUpload']['tmp_name'];
 $size = $_FILES['fileToUpload']['size'];
 echo filesize($target_file);
 $path_parts = pathinfo($target_file);
+$out1 = $path_parts['filename'] . ".out"
 
 move_uploaded_file($file_tmp,"/var/www/html/uploads/" . $file_name);
 
