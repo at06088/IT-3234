@@ -228,7 +228,7 @@ function hasRequestType($l,$s) {
         return substr_count($l,$s) > 0;
 }
 //File Download
-
+/*
 
     header('Content-Type: application/octet-stream');
     header('Content-Disposition: attachment; filename=' . $path_parts['filename'] . ".out");
@@ -238,6 +238,6 @@ function hasRequestType($l,$s) {
     header('Content-Length: ' . filesize($file_name));
     readfile($file_name);
     exit;
-
+*/
 
 ?>
