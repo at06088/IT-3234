@@ -7,7 +7,6 @@ $file_tmp = $_FILES['fileToUpload']['tmp_name'];
 //echo filesize($target_file);
 $path_parts = pathinfo($target_file);
 $out1 = $path_parts['filename'] . ".out";
-$size = filesize($file_tmp);
 
 move_uploaded_file($file_tmp,"/var/www/html/uploads/" . $file_name);
 
@@ -31,62 +30,83 @@ $num403 = 0;
 while (!feof($handle)) {
     $dd = fgets($handle);
     $requestsCount++;
+    $end = explode(' ', $dd);
     $parts = explode('"', $dd);
+
+
     $statusCode = substr($parts[2], 0, 4);
 
     //remote
     if (substr_count($dd, 'remote')) {
     $numremote++;
         $lines++;
+
+        $size += array_pop($end);
         if (hasRequestType($statusCode, '404')){
           $num404++;
+          //$size += array_pop($parts);
         }elseif (hasRequestType($statusCode, '200')){
           $num200++;
+          //$size += array_pop($parts);
         }
         elseif (hasRequestType($statusCode, '300')){
           $num300++;
+          //$size += array_pop($parts);
         }
         elseif (hasRequestType($statusCode, '301')){
           $num301++;
+          //$size += array_pop($parts);
         }
         elseif (hasRequestType($statusCode, '307')){
           $num307++;
+          //$size += array_pop($parts);
         }
         elseif (hasRequestType($statusCode, '403')){
           $num403++;
+          //$size += array_pop($parts);
         }
         //check for 302
         elseif (hasRequestType($statusCode, '302')){
           $num302++;
+          //$size += array_pop($parts);
         }
         elseif (hasRequestType($statusCode, '400')){
           $num400++;
+          //$size += array_pop($parts);
         }
         //304
         elseif (hasRequestType($statusCode, '304')){
           $num304++;
+          //$size += array_pop($parts);
         }
         //403
         elseif (hasRequestType($statusCode, '401')){
           $num401++;
+          //$size += array_pop($parts);
         }
         elseif (hasRequestType($statusCode, '403')){
           $num403++;
+          //$size += array_pop($parts);
         }
         elseif (hasRequestType($statusCode, '410')){
           $num410++;
+          //$size += array_pop($parts);
         }
         elseif (hasRequestType($statusCode, '500')){
           $num500++;
+          //$size += array_pop($parts);
         }
         elseif (hasRequestType($statusCode, '501')){
           $num501++;
+          //$size += array_pop($parts);
         }
         elseif (hasRequestType($statusCode, '503')){
           $num503++;
+          //$size += array_pop($parts);
         }
         elseif (hasRequestType($statusCode, '550')){
           $num550++;
+          //$size += array_pop($parts);
         }else {
           $badlines++;
           $lines--;
@@ -98,55 +118,72 @@ while (!feof($handle)) {
     }elseif (substr_count($dd, 'local')) {
     $numlocal++;
         $lines++;
+        $size += array_pop($end);
         if (hasRequestType($statusCode, '404')){
           $num404++;
+          //$size += array_pop($parts);
         }elseif (hasRequestType($statusCode, '200')){
           $num200++;
+          //$size += array_pop($parts);
         }
         elseif (hasRequestType($statusCode, '300')){
           $num300++;
+          //$size += array_pop($parts);
         }
         elseif (hasRequestType($statusCode, '301')){
           $num301++;
+          //$size += array_pop($parts);
         }
         elseif (hasRequestType($statusCode, '307')){
           $num307++;
+          //$size += array_pop($parts);
         }
         elseif (hasRequestType($statusCode, '403')){
           $num403++;
+          //$size += array_pop($parts);
         }
         //check for 302
         elseif (hasRequestType($statusCode, '302')){
           $num302++;
+          //$size += array_pop($parts);
         }
         elseif (hasRequestType($statusCode, '400')){
           $num400++;
+          //$size += array_pop($parts);
         }
         //304
         elseif (hasRequestType($statusCode, '304')){
           $num304++;
+          //$size += array_pop($parts);
         }
         //403
         elseif (hasRequestType($statusCode, '401')){
           $num401++;
+          //$size += array_pop($parts);
         }
         elseif (hasRequestType($statusCode, '403')){
           $num403++;
+          //$size += array_pop($parts);
         }
         elseif (hasRequestType($statusCode, '410')){
           $num410++;
+          //$size += array_pop($parts);
         }
         elseif (hasRequestType($statusCode, '500')){
           $num500++;
+          //$size += array_pop($parts);
         }
         elseif (hasRequestType($statusCode, '501')){
           $num501++;
+          //$size += array_pop($parts);
         }
         elseif (hasRequestType($statusCode, '503')){
           $num503++;
+          //$size += array_pop($parts);
         }
         elseif (hasRequestType($statusCode, '550')){
           $num550++;
+          //$size += array_pop($parts);
         }else {
           $badlines++;
           $lines--;
@@ -228,7 +265,7 @@ function hasRequestType($l,$s) {
         return substr_count($l,$s) > 0;
 }
 //File Download
-
+/*
 
     header('Content-Type: application/octet-stream');
     header('Content-Disposition: attachment; filename=' . $path_parts['filename'] . ".out");
@@ -238,6 +275,6 @@ function hasRequestType($l,$s) {
     header('Content-Length: ' . filesize($file_name));
     readfile($file_name);
     exit;
-
+*/
 
 ?>
