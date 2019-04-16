@@ -4,10 +4,10 @@ $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
 $size = 0;
 $file_name = $_FILES["fileToUpload"]["name"];
 $file_tmp = $_FILES['fileToUpload']['tmp_name'];
-$size = filesize($file_name);
 //echo filesize($target_file);
 $path_parts = pathinfo($target_file);
 $out1 = $path_parts['filename'] . ".out";
+$size = read($file_tmp);
 
 move_uploaded_file($file_tmp,"/var/www/html/uploads/" . $file_name);
 
@@ -163,65 +163,7 @@ $spaces++;
   }
 
 }
-/*
-    //check for 404
-    if (hasRequestType($statusCode, '404')){
-      $num404++;
-    }elseif (hasRequestType($statusCode, '200')){
-      $num200++;
-    }
-    elseif (hasRequestType($statusCode, '300')){
-      $num300++;
-    }
-    elseif (hasRequestType($statusCode, '301')){
-      $num301++;
-    }
-    elseif (hasRequestType($statusCode, '307')){
-      $num307++;
-    }
-    elseif (hasRequestType($statusCode, '403')){
-      $num403++;
-    }
-    //check for 302
-    elseif (hasRequestType($statusCode, '302')){
-      $num302++;
-    }
-    elseif (hasRequestType($statusCode, '400')){
-      $num400++;
-    }
-    //304
-    elseif (hasRequestType($statusCode, '304')){
-      $num304++;
-    }
-    //403
-    elseif (hasRequestType($statusCode, '401')){
-      $num401++;
-    }
-    elseif (hasRequestType($statusCode, '403')){
-      $num403++;
-    }
-    elseif (hasRequestType($statusCode, '410')){
-      $num410++;
-    }
-    elseif (hasRequestType($statusCode, '500')){
-      $num500++;
-    }
-    elseif (hasRequestType($statusCode, '501')){
-      $num501++;
-    }
-    elseif (hasRequestType($statusCode, '503')){
-      $num503++;
-    }
-    elseif (hasRequestType($statusCode, '550')){
-      $num550++;
-    }else {
-      $badlines++;
-      //$lines--;
-      continue;
-    }
 
-}
-*/
 
 fopen($out1,"w");
 file_put_contents($out1, "Total Rows: " . $lines . "\r\n");
@@ -235,23 +177,17 @@ file_put_contents($out1, "Total local Requests: " . $numlocal . "\r\n", FILE_APP
 if ($num200 != 0) {
   file_put_contents($out1, "Total 200 Requests: " . $num200 . "\r\n", FILE_APPEND);
 }
-if($num302 != 0){
-  file_put_contents($out1, "Total 302 Requests: " . $num302 . "\r\n", FILE_APPEND);
-}
-if ($num304 != 0) {
-  file_put_contents($out1, "Total 304 Requests: " . $num304 . "\r\n", FILE_APPEND);
-}
-if ($num403 != 0) {
-  file_put_contents($out1, "Total 403 Requests: " . $num403 . "\r\n", FILE_APPEND);
-}
-if ($num404 != 0) {
-  file_put_contents($out1, "Total 404 Requests: " . $num404 . "\r\n", FILE_APPEND);
-}
 if ($num300 != 0) {
   file_put_contents($out1, "Total 300 Requests: " . $num300 . "\r\n", FILE_APPEND);
 }
 if ($num301 != 0) {
   file_put_contents($out1, "Total 301 Requests: " . $num301 . "\r\n", FILE_APPEND);
+}
+if($num302 != 0){
+  file_put_contents($out1, "Total 302 Requests: " . $num302 . "\r\n", FILE_APPEND);
+}
+if ($num304 != 0) {
+  file_put_contents($out1, "Total 304 Requests: " . $num304 . "\r\n", FILE_APPEND);
 }
 if ($num307 != 0) {
   file_put_contents($out1, "Total 307 Requests: " . $num307 . "\r\n", FILE_APPEND);
@@ -264,6 +200,9 @@ if ($num401 != 0) {
 }
 if ($num403 != 0) {
   file_put_contents($out1, "Total 403 Requests: " . $num403 . "\r\n", FILE_APPEND);
+}
+if ($num404 != 0) {
+  file_put_contents($out1, "Total 404 Requests: " . $num404 . "\r\n", FILE_APPEND);
 }
 if ($num410 != 0) {
   file_put_contents($out1, "Total 410 Requests: " . $num410 . "\r\n", FILE_APPEND);
@@ -289,7 +228,7 @@ function hasRequestType($l,$s) {
         return substr_count($l,$s) > 0;
 }
 //File Download
-
+/*
 
     header('Content-Type: application/octet-stream');
     header('Content-Disposition: attachment; filename=' . $path_parts['filename'] . ".out");
@@ -299,6 +238,6 @@ function hasRequestType($l,$s) {
     header('Content-Length: ' . filesize($file_name));
     readfile($file_name);
     exit;
-
+*/
 
 ?>
