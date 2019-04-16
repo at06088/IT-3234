@@ -7,7 +7,7 @@ $file_tmp = $_FILES['fileToUpload']['tmp_name'];
 //echo filesize($target_file);
 $path_parts = pathinfo($target_file);
 $out1 = $path_parts['filename'] . ".out";
-$size = read($file_tmp);
+$size = filesize($file_tmp);
 
 move_uploaded_file($file_tmp,"/var/www/html/uploads/" . $file_name);
 
@@ -166,58 +166,58 @@ $spaces++;
 
 
 fopen($out1,"w");
-file_put_contents($out1, "Total Rows: " . $lines . "\r\n");
+file_put_contents($out1, "Rows: " . $lines . "\r\n");
 
-file_put_contents($out1, "Total number of bad lines: " . $badlines .  "\r\n", FILE_APPEND);
-file_put_contents($out1, "Total Size: " . $size . "\r\n", FILE_APPEND);
-file_put_contents($out1, "Total Remote Requests: " . $numremote . "\r\n", FILE_APPEND);
-file_put_contents($out1, "Total local Requests: " . $numlocal . "\r\n", FILE_APPEND);
+file_put_contents($out1, "Bad: " . $badlines .  "\r\n", FILE_APPEND);
+file_put_contents($out1, "Bytes: " . $size . "\r\n", FILE_APPEND);
+file_put_contents($out1, "Remote: " . $numremote . "\r\n", FILE_APPEND);
+file_put_contents($out1, "Local: " . $numlocal . "\r\n", FILE_APPEND);
 
 
 if ($num200 != 0) {
-  file_put_contents($out1, "Total 200 Requests: " . $num200 . "\r\n", FILE_APPEND);
+  file_put_contents($out1, "200: " . $num200 . "\r\n", FILE_APPEND);
 }
 if ($num300 != 0) {
-  file_put_contents($out1, "Total 300 Requests: " . $num300 . "\r\n", FILE_APPEND);
+  file_put_contents($out1, "300: " . $num300 . "\r\n", FILE_APPEND);
 }
 if ($num301 != 0) {
-  file_put_contents($out1, "Total 301 Requests: " . $num301 . "\r\n", FILE_APPEND);
+  file_put_contents($out1, "301: " . $num301 . "\r\n", FILE_APPEND);
 }
 if($num302 != 0){
-  file_put_contents($out1, "Total 302 Requests: " . $num302 . "\r\n", FILE_APPEND);
+  file_put_contents($out1, "302: " . $num302 . "\r\n", FILE_APPEND);
 }
 if ($num304 != 0) {
-  file_put_contents($out1, "Total 304 Requests: " . $num304 . "\r\n", FILE_APPEND);
+  file_put_contents($out1, "304: " . $num304 . "\r\n", FILE_APPEND);
 }
 if ($num307 != 0) {
-  file_put_contents($out1, "Total 307 Requests: " . $num307 . "\r\n", FILE_APPEND);
+  file_put_contents($out1, "307: " . $num307 . "\r\n", FILE_APPEND);
 }
 if ($num400 != 0) {
-  file_put_contents($out1, "Total 400 Requests: " . $num400 . "\r\n", FILE_APPEND);
+  file_put_contents($out1, "400: " . $num400 . "\r\n", FILE_APPEND);
 }
 if ($num401 != 0) {
-  file_put_contents($out1, "Total 401 Requests: " . $num401 . "\r\n", FILE_APPEND);
+  file_put_contents($out1, "401: " . $num401 . "\r\n", FILE_APPEND);
 }
 if ($num403 != 0) {
-  file_put_contents($out1, "Total 403 Requests: " . $num403 . "\r\n", FILE_APPEND);
+  file_put_contents($out1, "403: " . $num403 . "\r\n", FILE_APPEND);
 }
 if ($num404 != 0) {
-  file_put_contents($out1, "Total 404 Requests: " . $num404 . "\r\n", FILE_APPEND);
+  file_put_contents($out1, "404: " . $num404 . "\r\n", FILE_APPEND);
 }
 if ($num410 != 0) {
-  file_put_contents($out1, "Total 410 Requests: " . $num410 . "\r\n", FILE_APPEND);
+  file_put_contents($out1, "410: " . $num410 . "\r\n", FILE_APPEND);
 }
 if ($num500 != 0) {
-  file_put_contents($out1, "Total 500 Requests: " . $num500 . "\r\n", FILE_APPEND);
+  file_put_contents($out1, "500: " . $num500 . "\r\n", FILE_APPEND);
 }
 if ($num501 != 0) {
-  file_put_contents($out1, "Total 501 Requests: " . $num501 . "\r\n", FILE_APPEND);
+  file_put_contents($out1, "501: " . $num501 . "\r\n", FILE_APPEND);
 }
 if ($num503 != 0) {
-  file_put_contents($out1, "Total 503 Requests: " . $num503 . "\r\n", FILE_APPEND);
+  file_put_contents($out1, "503: " . $num503 . "\r\n", FILE_APPEND);
 }
 if ($num550 != 0) {
-  file_put_contents($out1, "Total 550 Requests: " . $num550 . "\r\n", FILE_APPEND);
+  file_put_contents($out1, "550: " . $num550 . "\r\n", FILE_APPEND);
 }
 //Closes file
 fclose($out1);
@@ -228,7 +228,7 @@ function hasRequestType($l,$s) {
         return substr_count($l,$s) > 0;
 }
 //File Download
-/*
+
 
     header('Content-Type: application/octet-stream');
     header('Content-Disposition: attachment; filename=' . $path_parts['filename'] . ".out");
@@ -238,6 +238,6 @@ function hasRequestType($l,$s) {
     header('Content-Length: ' . filesize($file_name));
     readfile($file_name);
     exit;
-*/
+
 
 ?>
